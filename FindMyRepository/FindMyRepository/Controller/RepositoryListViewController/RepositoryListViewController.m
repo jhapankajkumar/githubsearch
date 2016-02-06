@@ -36,8 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.cancel.text = @"Sort";
-    [self.cancel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrangeRepository:)]];
+    self.sort.text = @"Sort";
+    [self.sort addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrangeRepository:)]];
     [self.searchBar becomeFirstResponder];
     self.repositoryDataArray   = [NSMutableArray new];
     self.searchTableView.rowHeight = UITableViewAutomaticDimension;
@@ -227,7 +227,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     @try {
-        if (((self.repositoryDataArray.count - 1) == indexPath.row) && (self.totalPage/PER_PAGE_COUNT>self.pageNumber) && self.searchBar.text.length) {
+        if (((self.repositoryDataArray.count - 10) == indexPath.row) && (self.totalPage/PER_PAGE_COUNT>self.pageNumber) && self.searchBar.text.length) {
             [self loadNextPageData];
         }
     }

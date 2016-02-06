@@ -43,7 +43,7 @@
                                     <outlet property="delegate" destination="n7L-Ha-fsL" id="c8i-vr-UJR"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-FF-MZa">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Sort" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5l-FF-MZa">
                                 <rect key="frame" x="244" y="63" width="80" height="44"/>
                                 <color key="backgroundColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -117,9 +117,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="pAf-a3-zFV"/>
                     <connections>
-                        <outlet property="cancel" destination="v5l-FF-MZa" id="Cya-Aj-jVX"/>
                         <outlet property="searchBar" destination="L1N-Xy-JqX" id="N9Q-ba-OFe"/>
                         <outlet property="searchTableView" destination="hIv-iy-6BT" id="pk6-jt-otw"/>
+                        <outlet property="sort" destination="v5l-FF-MZa" id="483-gj-vWB"/>
                         <segue destination="Aj9-Ys-xUE" kind="push" identifier="RepositoryListToDetailView" id="tdv-75-p9t"/>
                     </connections>
                 </viewController>

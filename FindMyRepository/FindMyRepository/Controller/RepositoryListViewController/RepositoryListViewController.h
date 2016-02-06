@@ -13,5 +13,5 @@
 @interface RepositoryListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *searchTableView;
-@property (weak, nonatomic) IBOutlet UILabel *cancel;
+@property (weak, nonatomic) IBOutlet UILabel *sort;
 @end

@@ -9,6 +9,7 @@
 #ifndef Constants_h
 #define Constants_h
 
+//maximum perpage limit from GITHub is 100
 #define PER_PAGE_COUNT   20
 #define OOPS_ERROR    @"Oops! Something went wrong. Please Retry"
 #define APPLICATION_NAME  @"FindMyRepository"
