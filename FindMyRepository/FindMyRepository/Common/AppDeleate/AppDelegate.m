@@ -10,8 +10,8 @@
 #import <RestKit/RestKit.h>
 #import "GHResults.h"
 #import "GHRepository.h"
-//https://api.github.com/search/repositories?q=objectivec&sort=stars&order=desc&per_page=20&page=1
-@interface AppDelegate () <UISplitViewControllerDelegate>
+
+@interface AppDelegate ()
 
 @end
 
@@ -20,11 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-    
-    
-    
     return YES;
 }
 

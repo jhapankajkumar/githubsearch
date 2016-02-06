@@ -14,26 +14,26 @@
 
 @implementation DataFetchManager
 
--(void)searchRepositoryDataWithString:(NSString *)aSearchedString forPageNumber:(NSUInteger)pageNumber withCompletionBlock:(void(^) (GHResults* result,BOOL success, NSError *error))completionBlock {
+- (void)searchRepositoryDataWithString:(NSString *)aSearchedString forPageNumber:(NSUInteger )pageNumber sortBy:(SortType)aSortType inOrder:(OrderBy)orderBy withCompletionBlock:(void(^) (GHResults* result,BOOL success, NSError *error))completionBlock {
     
     @try {
-        // initialize AFNetworking HTTPClient
+        
+        
+        // Step 1 : Create a base client
         NSURL *baseURL = [NSURL URLWithString:@"https://api.github.com"];
         AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
         
-        // initialize RestKit
+        // Step 2: initialize RestKit
         RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
         
-        //    // setup object mappings
+        // Step 3: setup object mappings
         RKObjectMapping *resultMapping = [RKObjectMapping mappingForClass:[GHResults class]];
         [resultMapping addAttributeMappingsFromDictionary:@{
                                                             @"total_count": @"totalCount",
                                                             @"incomplete_result": @"isIncompleteResults",
                                                             }];;
         
-        NSLog(@"page no :%lu",(unsigned long)pageNumber);
         RKObjectMapping *repositoryMapping = [RKObjectMapping mappingForClass:[GHRepository class]];
-        
         [repositoryMapping addAttributeMappingsFromDictionary:@{
                                                                 @"name": @"name",
                                                                 @"full_name": @"fullName",
@@ -48,30 +48,33 @@
         //add relationship mapping to article
         [resultMapping addPropertyMapping:rel];
         
-        // register mappings with the provider using a response descriptor
+        
+        
+        //Step 4:  register mappings with the provider using a response descriptor
         RKResponseDescriptor *responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:resultMapping
                                                      method:RKRequestMethodGET
                                                 pathPattern:nil
                                                     keyPath:nil
                                                 statusCodes:[NSIndexSet indexSetWithIndex:200]];
-        
         [objectManager addResponseDescriptor:responseDescriptor];
         
+        //Step 5: Create query parameters
         NSDictionary *queryParams = @{@"q" : aSearchedString,
                                       @"access_token":AccessToken,
-                                      @"sort" : @"stars",
-                                      @"order" : @"desc",
+                                      @"sort" : [self getSortType:aSortType],
+                                      @"order" : [self getOrderType:orderBy],
                                       @"per_page":[NSString stringWithFormat:@"%lu",(unsigned long)PER_PAGE_COUNT],
                                       @"page":[NSString stringWithFormat:@"%lu",(unsigned long)pageNumber]
                                       };
         
+        //Step 6: Get the object
         [objectManager getObjectsAtPath:@"/search/repositories"
                              parameters:queryParams
                                 success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                     GHResults *results = [mappingResult.array firstObject];
-                                    // NSLog(@"%@",mappingResult.array);
                                     
+                                    //if resutl is incomplete
                                     if (results.isIncompleteResults == false) {
                                         dispatch_async(dispatch_get_main_queue(), ^{
                                             completionBlock(results,true,nil);
@@ -101,7 +104,6 @@
     
     @try {
         
-        
         //    // setup object mappings
         RKObjectMapping *issueMapping = [RKObjectMapping mappingForClass:[GHIssues class]];
         [issueMapping addAttributeMappingsFromDictionary:@{
@@ -115,6 +117,8 @@
                                                 pathPattern:nil
                                                     keyPath:nil
                                                 statusCodes:[NSIndexSet indexSetWithIndex:200]];
+        
+        //checking for "{" in some of the url contains this
         NSString *issueUrl = aUrl;
         NSArray *urlArray = [aUrl componentsSeparatedByString:@"{"];
         if (urlArray.count>1) {
@@ -130,8 +134,8 @@
             NSMutableArray *issueArray = [NSMutableArray new];
             
             NSUInteger upperLimit = 0;
-            if (dataArray.count>3) {
-                upperLimit = 3;
+            if (dataArray.count>=DATA_LIMIT) {
+                upperLimit = DATA_LIMIT;
             }
             else {
                 upperLimit = dataArray.count;
@@ -157,12 +161,14 @@
     
 }
 
+
+
 -(void)getContributorsFromURL:(NSString *)aUrl withCompletionBlock:(void(^) (NSArray* contributors,BOOL success, NSError *error))completionBlock {
     
     @try {
         
         
-        //    // setup object mappings
+        //
         RKObjectMapping *issueMapping = [RKObjectMapping mappingForClass:[GHContributors class]];
         [issueMapping addAttributeMappingsFromDictionary:@{
                                                            @"login": @"login",
@@ -176,13 +182,14 @@
                                                     keyPath:nil
                                                 statusCodes:[NSIndexSet indexSetWithIndex:200]];
         
-        NSString *issueUrl = aUrl;
+        NSString *contributorsUrl = aUrl;
+        //checking for "{" in some of the url contains this
         NSArray *urlArray = [aUrl componentsSeparatedByString:@"{"];
         if (urlArray.count>1) {
-            issueUrl  = [urlArray objectAtIndex:0];
+            contributorsUrl  = [urlArray objectAtIndex:0];
         }
         
-        NSURL *url = [NSURL URLWithString:issueUrl];
+        NSURL *url = [NSURL URLWithString:contributorsUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         RKObjectRequestOperation *operation = [[RKObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[responseDescriptor]];
         [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
@@ -191,9 +198,10 @@
             
             NSMutableArray *contributorsArray = [NSMutableArray new];
             
+            //setting uppper limit to show only top 3 data;
             NSUInteger upperLimit = 0;
-            if (dataArray.count>3) {
-                upperLimit = 3;
+            if (dataArray.count>=DATA_LIMIT) {
+                upperLimit = DATA_LIMIT;
             }
             else {
                 upperLimit = dataArray.count;
@@ -226,6 +234,7 @@
     NSURL *url = [NSURL URLWithString:anImageURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
+    //Downloading image using NSURLSession
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     
@@ -243,12 +252,43 @@
                 completionBlock(nil,anIndexPath,error);
             });
         }
-        
-        
     } ];
 
     [dataTask resume];
 }
 
+- (NSString*)getSortType:(SortType)sortType {
+    NSString *result = nil;
+    
+    switch(sortType) {
+        case SortTypeStars:
+            result = @"stars";
+            break;
+        case SortTypeForks:
+            result = @"forks";
+            break;
+        default:
+            [NSException raise:NSGenericException format:@"Unexpected FormatType."];
+    }
+    
+    return result;
+}
+
+- (NSString*)getOrderType:(OrderBy)orderType {
+    NSString *result = nil;
+    
+    switch(orderType) {
+        case OrderByASC:
+            result = @"asc";
+            break;
+        case OrderByDESC:
+            result = @"desc";
+            break;
+        default:
+            [NSException raise:NSGenericException format:@"Unexpected FormatType."];
+    }
+    
+    return result;
+}
 
 @end

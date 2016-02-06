@@ -14,11 +14,18 @@
 #import "RepositoryDetailViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
-@interface RepositoryListViewController ()
+
+
+
+
+@interface RepositoryListViewController ()<UIActionSheetDelegate>
 @property (strong, nonatomic) NSMutableArray *repositoryDataArray;
 @property (nonatomic, assign) NSInteger pageNumber;
 @property (nonatomic, assign) NSInteger totalPage;
+@property (nonatomic, assign) SortType defaultSortType;
+@property (nonatomic, assign) OrderBy defaultOrderType;
 @property (nonatomic, assign) BOOL isPageRequestValid;
+
 @property (nonatomic, assign) NSIndexPath *selectedIndexPath;
 
 @end
@@ -29,12 +36,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.cancel.text = @"Search";
-    [self.cancel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSearchResults)]];
+    self.cancel.text = @"Sort";
+    [self.cancel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrangeRepository:)]];
     [self.searchBar becomeFirstResponder];
     self.repositoryDataArray   = [NSMutableArray new];
     self.searchTableView.rowHeight = UITableViewAutomaticDimension;
     self.searchTableView.estimatedRowHeight = 80;
+    self.defaultSortType = SortTypeStars;
+    self.defaultOrderType = OrderByDESC;
     
 }
 
@@ -66,18 +75,60 @@
 }
 
 
-#pragma mark - Private Methods
-
-- (void)backButtonTapped {
-    [self.searchBar resignFirstResponder];
+- (IBAction)arrangeRepository:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Arrange repositories by"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Stars -- High to Low",@"Stars -- Low to High",@"Forks -- High to Low",@"Forks -- Low to High", nil];
+    
+    
+    
+    if (self.repositoryDataArray.count) {
+        [actionSheet showInView:self.view];
+    }
 }
-
+#pragma mark - Private Methods
 - (void)showSearchResults {
     [self.searchBar resignFirstResponder];
     if (self.searchBar.text.length>0)
     {
         [self getSearchReaults];
     }
+}
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {
+        case 0:
+            self.defaultSortType = SortTypeStars;
+            self.defaultOrderType= OrderByDESC;
+            break;
+        
+        case 1:
+            self.defaultSortType = SortTypeStars;
+            self.defaultOrderType= OrderByASC;
+            break;
+        case 2:
+            self.defaultSortType = SortTypeForks;
+            self.defaultOrderType= OrderByDESC;
+            break;
+        case 3:
+            self.defaultSortType = SortTypeForks;
+            self.defaultOrderType= OrderByASC;
+            break;
+            
+        default:
+            break;
+    }
+    NSString * searchText =  [self.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (searchText.length>0)
+    {
+        self.searchBar.text = searchText;
+        [self getSearchReaults];
+    }
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)getSearchReaults {
@@ -88,7 +139,7 @@
         self.isPageRequestValid = NO;
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         DataFetchManager *dataFetchManager = [DataFetchManager new];
-        [dataFetchManager searchRepositoryDataWithString:self.searchBar.text forPageNumber:self.pageNumber withCompletionBlock:^(GHResults *result, BOOL success, NSError *error) {
+        [dataFetchManager searchRepositoryDataWithString:self.searchBar.text forPageNumber:self.pageNumber sortBy:self.defaultSortType inOrder:self.defaultOrderType withCompletionBlock:^(GHResults *result, BOOL success, NSError *error) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             if (success) {
                 [self.repositoryDataArray removeAllObjects];
@@ -118,7 +169,7 @@
         
         DataFetchManager *dataFetchManager = [DataFetchManager new];
         __weak __typeof(&*self)weakSelf = self;
-        [dataFetchManager searchRepositoryDataWithString:self.searchBar.text forPageNumber:self.pageNumber withCompletionBlock:^(GHResults *result, BOOL success, NSError *error) {
+        [dataFetchManager searchRepositoryDataWithString:self.searchBar.text forPageNumber:self.pageNumber sortBy:self.defaultSortType inOrder:self.defaultOrderType withCompletionBlock:^(GHResults *result, BOOL success, NSError *error) {
             
             if (success &&self.isPageRequestValid && [result isKindOfClass:[GHResults class]]) {
                 self.pageNumber++;
@@ -161,7 +212,7 @@
         GHRepository *repository = [self.repositoryDataArray objectAtIndex:indexPath.row];
         UILabel *repositoryName = [(UILabel *)cell viewWithTag:1001];
         UILabel *repositoryDescrepion = [(UILabel *)cell viewWithTag:1002];
-        repositoryName.text = repository.name;
+        repositoryName.text = repository.fullName;
         repositoryDescrepion.text = repository.repositoryDescription;
         return cell;
     }
@@ -212,8 +263,11 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self.searchBar resignFirstResponder];
-    if (self.searchBar.text.length>0)
+    
+  NSString * searchText =  [self.searchBar.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (searchText.length>0)
     {
+        self.searchBar.text = searchText;
         [self getSearchReaults];
     }
 }
@@ -229,6 +283,10 @@
 
 -(void)showAlertWithError:(NSError*)aError {
     [[[UIAlertView alloc] initWithTitle:APPLICATION_NAME message:aError.localizedDescription delegate:nil cancelButtonTitle:OK_MESSAGE otherButtonTitles:nil] show];
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.searchBar resignFirstResponder];
 }
 
 @end

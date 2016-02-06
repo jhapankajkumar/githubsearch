@@ -13,7 +13,7 @@
 @interface RepositoryDetailViewController () {
     DataFetchManager *dataFetchManager;
 }
-    
+
 @property (strong, nonatomic) NSMutableArray *issueArray;
 @property (strong, nonatomic) NSMutableArray *contributorsArray;
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
@@ -32,6 +32,18 @@
     self.detailTableView.estimatedRowHeight = 80;
     dataFetchManager = [[DataFetchManager alloc]init];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    
+    //getting contributers
+    [dataFetchManager getContributorsFromURL:self.repository.contributorsUrl withCompletionBlock:^(NSArray *contributors, BOOL success, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (success && contributors.count) {
+            self.contributorsArray = [[NSMutableArray alloc]initWithArray:contributors];
+            [self.detailTableView reloadData];
+        }
+    }];
+    
+    //getting issues
     [dataFetchManager getIssuListFromURL:self.repository.issuesUrl withCompletionBlock:^(NSArray *issues, BOOL success, NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (success && issues.count) {
@@ -39,14 +51,6 @@
             [self.detailTableView reloadData];
         }
         
-    }];
-    
-    [dataFetchManager getContributorsFromURL:self.repository.contributorsUrl withCompletionBlock:^(NSArray *contributors, BOOL success, NSError *error) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if (success && contributors.count) {
-            self.contributorsArray = [[NSMutableArray alloc]initWithArray:contributors];
-            [self.detailTableView reloadData];
-        }
     }];
     
 }
@@ -58,12 +62,8 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (self.contributorsArray.count && self.issueArray.count) {
-        return 3;
-    }
-    else {
-        return 2;
-    }
+    
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -155,7 +155,7 @@
                 break;
         }
         
-       
+        
     }
     @catch (NSException *exception) {
         NSLog(@"Class: RepositoryDetailViewController");
@@ -189,7 +189,7 @@
         NSLog(@"Class: RepositoryDetailViewController");
         NSLog(@"Method: titleForHeaderInSection");
     }
-   
+    
     
     
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5pJ-AA-vHG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5pJ-AA-vHG">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -187,7 +187,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OOL-js-RL5">
+                                                <imageView userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="OOL-js-RL5">
                                                     <rect key="frame" x="20" y="8" width="100" height="77"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="77" id="g12-Y3-yus"/>
@@ -204,14 +204,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <activityIndicatorView opaque="NO" tag="1003" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TvW-Sp-Vnz">
-                                                    <rect key="frame" x="48" y="37" width="20" height="20"/>
+                                                    <rect key="frame" x="58" y="37" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="TvW-Sp-Vnz" firstAttribute="top" secondItem="EWB-AY-Gy1" secondAttribute="topMargin" constant="29" id="75C-SZ-1fi"/>
                                                 <constraint firstItem="OOL-js-RL5" firstAttribute="top" secondItem="EWB-AY-Gy1" secondAttribute="topMargin" id="9mM-dG-aOO"/>
                                                 <constraint firstItem="nlQ-nT-QOw" firstAttribute="top" secondItem="OOL-js-RL5" secondAttribute="bottom" constant="7" id="H24-7d-e99"/>
-                                                <constraint firstItem="TvW-Sp-Vnz" firstAttribute="leading" secondItem="EWB-AY-Gy1" secondAttribute="leadingMargin" constant="40" id="Lgc-G0-wzm"/>
+                                                <constraint firstItem="TvW-Sp-Vnz" firstAttribute="leading" secondItem="EWB-AY-Gy1" secondAttribute="leadingMargin" constant="50" id="Lgc-G0-wzm"/>
                                                 <constraint firstItem="OOL-js-RL5" firstAttribute="leading" secondItem="EWB-AY-Gy1" secondAttribute="leadingMargin" constant="12" id="NtK-P6-Mw3"/>
                                                 <constraint firstItem="nlQ-nT-QOw" firstAttribute="leading" secondItem="OOL-js-RL5" secondAttribute="leading" id="TJk-3s-6Ad"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="nlQ-nT-QOw" secondAttribute="bottom" id="qUc-dk-j1a"/>
@@ -244,4 +244,7 @@
             <point key="canvasLocation" x="196" y="-377"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder.png" width="100" height="100"/>
+    </resources>
 </document>
