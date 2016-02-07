@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		188515DE4BB48634DB2CE616 /* libPods-FindMyRepository.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0F80A8640D15ED4BF9065E /* libPods-FindMyRepository.a */; };
-		56D3EE5E1C669E4300FF714A /* sort.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D3EE5C1C669E4300FF714A /* sort.png */; };
-		56D3EE5F1C669E4300FF714A /* sort@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D3EE5D1C669E4300FF714A /* sort@2x.png */; };
 		56D3EE621C66A71B00FF714A /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D3EE601C66A71B00FF714A /* placeholder.png */; };
 		56D3EE631C66A71B00FF714A /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D3EE611C66A71B00FF714A /* placeholder@2x.png */; };
 		5C4C555EFF06607BAD2F64E7 /* libPods-FindMyRepositoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E26E3B01B86F54BADB9968A6 /* libPods-FindMyRepositoryTests.a */; };
@@ -43,8 +41,6 @@
 /* Begin PBXFileReference section */
 		0F7C244E9C25EDE7CB4A7A79 /* Pods-FindMyRepositoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMyRepositoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindMyRepositoryTests/Pods-FindMyRepositoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E0F80A8640D15ED4BF9065E /* libPods-FindMyRepository.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindMyRepository.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56D3EE5C1C669E4300FF714A /* sort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sort.png; sourceTree = "<group>"; };
-		56D3EE5D1C669E4300FF714A /* sort@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sort@2x.png"; sourceTree = "<group>"; };
 		56D3EE601C66A71B00FF714A /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		56D3EE611C66A71B00FF714A /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		5F31BCCEDB5B4A1185E215E1 /* Pods-FindMyRepositoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMyRepositoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindMyRepositoryTests/Pods-FindMyRepositoryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,8 +134,6 @@
 			children = (
 				56D3EE601C66A71B00FF714A /* placeholder.png */,
 				56D3EE611C66A71B00FF714A /* placeholder@2x.png */,
-				56D3EE5C1C669E4300FF714A /* sort.png */,
-				56D3EE5D1C669E4300FF714A /* sort@2x.png */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -431,9 +425,7 @@
 				56D3EE631C66A71B00FF714A /* placeholder@2x.png in Resources */,
 				56D3EE621C66A71B00FF714A /* placeholder.png in Resources */,
 				B2ED09F41C65C1A10097EBFC /* Assets.xcassets in Resources */,
-				56D3EE5F1C669E4300FF714A /* sort@2x.png in Resources */,
 				B2ED09F21C65C1A10097EBFC /* Main.storyboard in Resources */,
-				56D3EE5E1C669E4300FF714A /* sort.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
