@@ -96,7 +96,9 @@
                 UILabel *repositoryName = [(UILabel *)cell viewWithTag:1001];
                 UILabel *repositoryDescrepion = [(UILabel *)cell viewWithTag:1002];
                 repositoryName.text = repository.name;
+                repositoryDescrepion.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds) - 40;
                 repositoryDescrepion.text = repository.repositoryDescription;
+                
                 return cell;
             }
                 
@@ -145,6 +147,7 @@
                 GHIssues *repository = [self.issueArray objectAtIndex:indexPath.row];
                 UILabel *repositoryName = [(UILabel *)cell viewWithTag:1001];
                 UILabel *repositoryDescrepion = [(UILabel *)cell viewWithTag:1002];
+                repositoryDescrepion.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds) - 40;
                 repositoryName.text = repository.title;
                 repositoryDescrepion.text = repository.body;
                 return cell;

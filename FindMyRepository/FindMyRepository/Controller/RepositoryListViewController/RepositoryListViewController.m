@@ -36,15 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.sort.text = @"Sort";
-    [self.sort addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrangeRepository:)]];
-    [self.searchBar becomeFirstResponder];
-    self.repositoryDataArray   = [NSMutableArray new];
-    self.searchTableView.rowHeight = UITableViewAutomaticDimension;
-    self.searchTableView.estimatedRowHeight = 80;
-    self.defaultSortType = SortTypeStars;
-    self.defaultOrderType = OrderByDESC;
     
+    [self initialSetup];
 }
 
 - (void)viewDidUnload
@@ -75,7 +68,7 @@
 }
 
 
-- (IBAction)arrangeRepository:(id)sender {
+- (void)arrangeRepository:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Arrange repositories by"
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
@@ -89,6 +82,19 @@
     }
 }
 #pragma mark - Private Methods
+
+
+-(void)initialSetup {
+    self.sort.text = @"Sort";
+    [self.sort addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(arrangeRepository:)]];
+    [self.searchBar becomeFirstResponder];
+    self.repositoryDataArray   = [NSMutableArray new];
+    self.searchTableView.rowHeight = UITableViewAutomaticDimension;
+    self.searchTableView.estimatedRowHeight = 80;
+    self.defaultSortType = SortTypeStars;
+    self.defaultOrderType = OrderByDESC;
+}
+
 - (void)showSearchResults {
     [self.searchBar resignFirstResponder];
     if (self.searchBar.text.length>0)
@@ -169,7 +175,7 @@
         
         DataFetchManager *dataFetchManager = [DataFetchManager new];
         __weak __typeof(&*self)weakSelf = self;
-        [dataFetchManager searchRepositoryDataWithString:self.searchBar.text forPageNumber:self.pageNumber sortBy:self.defaultSortType inOrder:self.defaultOrderType withCompletionBlock:^(GHResults *result, BOOL success, NSError *error) {
+        [dataFetchManager searchRepositoryDataWithString:self.searchBar.text forPageNumber:self.pageNumber+1 sortBy:self.defaultSortType inOrder:self.defaultOrderType withCompletionBlock:^(GHResults *result, BOOL success, NSError *error) {
             
             if (success &&self.isPageRequestValid && [result isKindOfClass:[GHResults class]]) {
                 self.pageNumber++;
@@ -210,9 +216,12 @@
     @try {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"list" forIndexPath:indexPath];
         GHRepository *repository = [self.repositoryDataArray objectAtIndex:indexPath.row];
-        UILabel *repositoryName = [(UILabel *)cell viewWithTag:1001];
+        UILabel *repositoryName =  [(UILabel *)cell viewWithTag:1001];
+        
         UILabel *repositoryDescrepion = [(UILabel *)cell viewWithTag:1002];
+        repositoryDescrepion.text = @"";
         repositoryName.text = repository.fullName;
+        repositoryDescrepion.preferredMaxLayoutWidth = CGRectGetWidth(tableView.bounds) - 40;
         repositoryDescrepion.text = repository.repositoryDescription;
         return cell;
     }
