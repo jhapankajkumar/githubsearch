@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		188515DE4BB48634DB2CE616 /* libPods-FindMyRepository.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E0F80A8640D15ED4BF9065E /* libPods-FindMyRepository.a */; };
+		567F363D1C6778CE0049CDD1 /* ObjectMappingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567F363B1C6778CE0049CDD1 /* ObjectMappingTest.m */; };
+		567F363E1C6778CE0049CDD1 /* DataMappingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567F363C1C6778CE0049CDD1 /* DataMappingTest.m */; };
+		567F364A1C678D220049CDD1 /* GHResults.m in Sources */ = {isa = PBXBuildFile; fileRef = B26C512A1C65D5C3008ADCF1 /* GHResults.m */; };
+		567F364B1C678D270049CDD1 /* GHRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = B26C512D1C65D80E008ADCF1 /* GHRepository.m */; };
+		567F364C1C678D2B0049CDD1 /* GHIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB9FA71C66339E00B24011 /* GHIssues.m */; };
+		567F364D1C678D2F0049CDD1 /* GHContributors.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EB9FA41C66338F00B24011 /* GHContributors.m */; };
+		567F36511C678F210049CDD1 /* contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 567F364E1C678F210049CDD1 /* contributors.json */; };
+		567F36521C678F210049CDD1 /* issues.json in Resources */ = {isa = PBXBuildFile; fileRef = 567F364F1C678F210049CDD1 /* issues.json */; };
+		567F36531C678F210049CDD1 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 567F36501C678F210049CDD1 /* repositories.json */; };
+		567F36541C67911A0049CDD1 /* contributors.json in Resources */ = {isa = PBXBuildFile; fileRef = 567F364E1C678F210049CDD1 /* contributors.json */; };
+		567F36551C67911E0049CDD1 /* issues.json in Resources */ = {isa = PBXBuildFile; fileRef = 567F364F1C678F210049CDD1 /* issues.json */; };
+		567F36571C67915A0049CDD1 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 567F36501C678F210049CDD1 /* repositories.json */; };
+		567F36591C67A4680049CDD1 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567F36581C67A4680049CDD1 /* NetworkTest.m */; };
 		56D3EE621C66A71B00FF714A /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D3EE601C66A71B00FF714A /* placeholder.png */; };
 		56D3EE631C66A71B00FF714A /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D3EE611C66A71B00FF714A /* placeholder@2x.png */; };
 		5C4C555EFF06607BAD2F64E7 /* libPods-FindMyRepositoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E26E3B01B86F54BADB9968A6 /* libPods-FindMyRepositoryTests.a */; };
@@ -20,7 +33,7 @@
 		B2ED09F21C65C1A10097EBFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2ED09F01C65C1A10097EBFC /* Main.storyboard */; };
 		B2ED09F41C65C1A10097EBFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2ED09F31C65C1A10097EBFC /* Assets.xcassets */; };
 		B2ED09F71C65C1A10097EBFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2ED09F51C65C1A10097EBFC /* LaunchScreen.storyboard */; };
-		B2ED0A021C65C1A10097EBFC /* FindMyRepositoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED0A011C65C1A10097EBFC /* FindMyRepositoryTests.m */; };
+		B2ED0A021C65C1A10097EBFC /* UIComponentTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED0A011C65C1A10097EBFC /* UIComponentTest.m */; };
 		B2ED0A281C65C3AD0097EBFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED0A1D1C65C3AD0097EBFC /* AppDelegate.m */; };
 		B2ED0A2B1C65C3F20097EBFC /* RepositoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED0A2A1C65C3F20097EBFC /* RepositoryListViewController.m */; };
 		B2ED0A2C1C65C3F20097EBFC /* RepositoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ED0A2A1C65C3F20097EBFC /* RepositoryListViewController.m */; };
@@ -41,6 +54,12 @@
 /* Begin PBXFileReference section */
 		0F7C244E9C25EDE7CB4A7A79 /* Pods-FindMyRepositoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMyRepositoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindMyRepositoryTests/Pods-FindMyRepositoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E0F80A8640D15ED4BF9065E /* libPods-FindMyRepository.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindMyRepository.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		567F363B1C6778CE0049CDD1 /* ObjectMappingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMappingTest.m; sourceTree = "<group>"; };
+		567F363C1C6778CE0049CDD1 /* DataMappingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataMappingTest.m; sourceTree = "<group>"; };
+		567F364E1C678F210049CDD1 /* contributors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = contributors.json; path = Fixtures/contributors.json; sourceTree = "<group>"; };
+		567F364F1C678F210049CDD1 /* issues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = issues.json; path = Fixtures/issues.json; sourceTree = "<group>"; };
+		567F36501C678F210049CDD1 /* repositories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = repositories.json; path = Fixtures/repositories.json; sourceTree = "<group>"; };
+		567F36581C67A4680049CDD1 /* NetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTest.m; sourceTree = "<group>"; };
 		56D3EE601C66A71B00FF714A /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		56D3EE611C66A71B00FF714A /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		5F31BCCEDB5B4A1185E215E1 /* Pods-FindMyRepositoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindMyRepositoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindMyRepositoryTests/Pods-FindMyRepositoryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,7 +84,7 @@
 		B2ED09F61C65C1A10097EBFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2ED09F81C65C1A10097EBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2ED09FD1C65C1A10097EBFC /* FindMyRepositoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyRepositoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2ED0A011C65C1A10097EBFC /* FindMyRepositoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindMyRepositoryTests.m; sourceTree = "<group>"; };
+		B2ED0A011C65C1A10097EBFC /* UIComponentTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIComponentTest.m; sourceTree = "<group>"; };
 		B2ED0A031C65C1A10097EBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2ED0A1C1C65C3AD0097EBFC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B2ED0A1D1C65C3AD0097EBFC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,6 +138,16 @@
 				DE081976E98865814969716A /* libPods-FindMyRepositoryUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		567F363F1C677C410049CDD1 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				567F364E1C678F210049CDD1 /* contributors.json */,
+				567F364F1C678F210049CDD1 /* issues.json */,
+				567F36501C678F210049CDD1 /* repositories.json */,
+			);
+			name = Fixtures;
 			sourceTree = "<group>";
 		};
 		56D3EE5A1C669E4300FF714A /* Resources */ = {
@@ -221,7 +250,11 @@
 		B2ED0A001C65C1A10097EBFC /* FindMyRepositoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				B2ED0A011C65C1A10097EBFC /* FindMyRepositoryTests.m */,
+				567F363F1C677C410049CDD1 /* Fixtures */,
+				567F363B1C6778CE0049CDD1 /* ObjectMappingTest.m */,
+				567F363C1C6778CE0049CDD1 /* DataMappingTest.m */,
+				B2ED0A011C65C1A10097EBFC /* UIComponentTest.m */,
+				567F36581C67A4680049CDD1 /* NetworkTest.m */,
 				B2ED0A031C65C1A10097EBFC /* Info.plist */,
 			);
 			path = FindMyRepositoryTests;
@@ -426,6 +459,9 @@
 				56D3EE621C66A71B00FF714A /* placeholder.png in Resources */,
 				B2ED09F41C65C1A10097EBFC /* Assets.xcassets in Resources */,
 				B2ED09F21C65C1A10097EBFC /* Main.storyboard in Resources */,
+				567F36541C67911A0049CDD1 /* contributors.json in Resources */,
+				567F36551C67911E0049CDD1 /* issues.json in Resources */,
+				567F36571C67915A0049CDD1 /* repositories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +469,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567F36521C678F210049CDD1 /* issues.json in Resources */,
+				567F36531C678F210049CDD1 /* repositories.json in Resources */,
+				567F36511C678F210049CDD1 /* contributors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,9 +591,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567F364C1C678D2B0049CDD1 /* GHIssues.m in Sources */,
 				B2ED0A621C65C7010097EBFC /* DataFetchManager.m in Sources */,
+				567F36591C67A4680049CDD1 /* NetworkTest.m in Sources */,
+				567F364B1C678D270049CDD1 /* GHRepository.m in Sources */,
 				B2ED0A2C1C65C3F20097EBFC /* RepositoryListViewController.m in Sources */,
-				B2ED0A021C65C1A10097EBFC /* FindMyRepositoryTests.m in Sources */,
+				567F363E1C6778CE0049CDD1 /* DataMappingTest.m in Sources */,
+				567F364D1C678D2F0049CDD1 /* GHContributors.m in Sources */,
+				567F364A1C678D220049CDD1 /* GHResults.m in Sources */,
+				B2ED0A021C65C1A10097EBFC /* UIComponentTest.m in Sources */,
+				567F363D1C6778CE0049CDD1 /* ObjectMappingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,11 +722,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EC3AB7D145DCEB3B8B6F8A9 /* Pods-FindMyRepository.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FindMyRepository/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.til.nbt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.repository;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -689,11 +734,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4790E79887D5ED607F8CF19 /* Pods-FindMyRepository.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FindMyRepository/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.til.nbt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.til.repository;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

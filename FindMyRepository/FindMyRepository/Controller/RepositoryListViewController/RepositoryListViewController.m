@@ -249,10 +249,6 @@
         NSLog(@"Class: RepositoryListViewController");
         NSLog(@"Method: didSelectRowAtIndexPath");
     }
-    
-    
-    
-
 }
 
 #pragma mark - UISearchBarDelegate Methods

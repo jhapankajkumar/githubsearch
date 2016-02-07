@@ -1,0 +1,22 @@
+
+  {
+    "login": "hshoff",
+    "id": 339208,
+    "avatar_url": "https://avatars.githubusercontent.com/u/339208?v=3",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/hshoff",
+    "html_url": "https://github.com/hshoff",
+    "followers_url": "https://api.github.com/users/hshoff/followers",
+    "following_url": "https://api.github.com/users/hshoff/following{/other_user}",
+    "gists_url": "https://api.github.com/users/hshoff/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/hshoff/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/hshoff/subscriptions",
+    "organizations_url": "https://api.github.com/users/hshoff/orgs",
+    "repos_url": "https://api.github.com/users/hshoff/repos",
+    "events_url": "https://api.github.com/users/hshoff/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/hshoff/received_events",
+    "type": "User",
+    "site_admin": false,
+    "contributions": 259
+  }
+

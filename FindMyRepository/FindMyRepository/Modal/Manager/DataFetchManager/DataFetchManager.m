@@ -30,8 +30,8 @@
         RKObjectMapping *resultMapping = [RKObjectMapping mappingForClass:[GHResults class]];
         [resultMapping addAttributeMappingsFromDictionary:@{
                                                             @"total_count": @"totalCount",
-                                                            @"incomplete_result": @"isIncompleteResults",
-                                                            }];;
+                                                            @"incomplete_result": @"isIncompleteResults"
+                                                            }];
         
         RKObjectMapping *repositoryMapping = [RKObjectMapping mappingForClass:[GHRepository class]];
         [repositoryMapping addAttributeMappingsFromDictionary:@{
@@ -108,7 +108,7 @@
         RKObjectMapping *issueMapping = [RKObjectMapping mappingForClass:[GHIssues class]];
         [issueMapping addAttributeMappingsFromDictionary:@{
                                                            @"title": @"title",
-                                                           @"body": @"body",
+                                                           @"body": @"body"
                                                            }];
         // register mappings with the provider using a response descriptor
         RKResponseDescriptor *responseDescriptor =
@@ -172,7 +172,7 @@
         RKObjectMapping *issueMapping = [RKObjectMapping mappingForClass:[GHContributors class]];
         [issueMapping addAttributeMappingsFromDictionary:@{
                                                            @"login": @"login",
-                                                           @"avatar_url": @"avatarUrl",
+                                                           @"avatar_url": @"avatarUrl"
                                                            }];
         // register mappings with the provider using a response descriptor
         RKResponseDescriptor *responseDescriptor =

@@ -1,0 +1,48 @@
+
+  {
+    "url": "https://api.github.com/repos/airbnb/javascript/issues/716",
+    "repository_url": "https://api.github.com/repos/airbnb/javascript",
+    "labels_url": "https://api.github.com/repos/airbnb/javascript/issues/716/labels{/name}",
+    "comments_url": "https://api.github.com/repos/airbnb/javascript/issues/716/comments",
+    "events_url": "https://api.github.com/repos/airbnb/javascript/issues/716/events",
+    "html_url": "https://github.com/airbnb/javascript/issues/716",
+    "id": 131451383,
+    "number": 716,
+    "title": "Template Strings Spacing",
+    "user": {
+      "login": "felixsanz",
+      "id": 6182099,
+      "avatar_url": "https://avatars.githubusercontent.com/u/6182099?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/felixsanz",
+      "html_url": "https://github.com/felixsanz",
+      "followers_url": "https://api.github.com/users/felixsanz/followers",
+      "following_url": "https://api.github.com/users/felixsanz/following{/other_user}",
+      "gists_url": "https://api.github.com/users/felixsanz/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/felixsanz/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/felixsanz/subscriptions",
+      "organizations_url": "https://api.github.com/users/felixsanz/orgs",
+      "repos_url": "https://api.github.com/users/felixsanz/repos",
+      "events_url": "https://api.github.com/users/felixsanz/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/felixsanz/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/airbnb/javascript/labels/question",
+        "name": "question",
+        "color": "cc317c"
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "milestone": null,
+    "comments": 7,
+    "created_at": "2016-02-04T19:29:34Z",
+    "updated_at": "2016-02-04T21:35:18Z",
+    "closed_at": null,
+    "body": "In Template Strings:\r\n\r\n```javascript\r\n// good\r\nfunction sayHi(name) {\r\n  return `How are you, ${name}?`;\r\n}\r\n```\r\n\r\nDo you prefer `${name}` over `${ name }` ?\r\n\r\nFor variables that seems obvious (no space), but template strings allows much more, like `${ (name) ? name : 'No name' }`, where i think spacing makes it more clear.\r\n\r\n> I didn't test that expression, i can be wrong :stuck_out_tongue:\r\n"
+  }
+
